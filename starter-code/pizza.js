@@ -13,18 +13,21 @@
   var $greenPeppers = $('.green-pepper');
 
 
+  $pepperonni.toggle()
   $pepBtn.removeClass('active');
   $pepBtn.on('click', function(){
     $pepperonni.toggle();
     $pepBtn.toggleClass('active');
   });
 
+  $mushroom.toggle();
   $mushBtn.removeClass('active');
   $mushBtn.on('click', function(){
     $mushroom.toggle();
     $mushBtn.toggleClass('active');
   });
 
+  $greenPeppers.toggle();
   $greenPepBtn.removeClass('active');
   $greenPepBtn.on('click', function(){
     $greenPeppers.toggle();
