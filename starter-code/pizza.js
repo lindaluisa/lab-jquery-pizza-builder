@@ -10,7 +10,7 @@
   var $greenPeppers = $('.green-pepper');
 
     // Price
-    var basicPizza = 10;
+    var basicPizza = 13;
     var $pizzaTotal = $('strong');
     $('strong').text('$ 13');
 
@@ -59,11 +59,20 @@ var $sauceBtn = $('.btn-sauce');
   $sauce.removeClass('sauce-white');
   $sauceBtn.removeClass('active');
 
-  $('li:contains("white sauce")').hide();
+  var $saucePrice = $('li:contains("white sauce")');
+  $saucePrice.hide();
   $sauceBtn.on('click', function() {
   $sauce.toggleClass('sauce-white');
   $sauceBtn.toggleClass('active');
-  $('li:contains("white sauce")').toggle();
+  $saucePrice.toggle();
+  // $saucePrice.toggle();
+  if ($sauceBtn.hasClass('active')) {
+    basicPizza += 3;
+  } else {
+    basicPizza -=3;
+  }
+  updateTotal();
+
 
 })
 
@@ -73,17 +82,24 @@ var $crustBtn = $('.btn-crust');
   $crust.removeClass('crust-gluten-free');
   $crustBtn.removeClass('active');
 
-
-  $('li:contains("gluten-free crust")').hide();
+  var $crustPrice = $('li:contains("gluten-free crust")');
+  $crustPrice.hide();
   $crustBtn.on('click', function(){
     $crust.toggleClass('crust-gluten-free');
     $crustBtn.toggleClass('active');
-    $('li:contains("gluten-free crust")').toggle();
+    $crustPrice.toggle();
+    if ($crustBtn.hasClass('active')) {
+      basicPizza += 5;
+    } else {
+      basicPizza -= 5;
+    }
+    updateTotal();
   })
 
 
   function updateTotal() {
        console.log($pizzaTotal);
+       $('strong').text('$ 13');
        $('strong').text(function() {
         return $pizzaTotal = '$' + basicPizza;
        }
