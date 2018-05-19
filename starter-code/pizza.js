@@ -1,6 +1,3 @@
-// Write your Pizza Builder JavaScript in this file.
-
-  
   $(function() {
     // Button
   var $pepBtn = $('.btn-pepperonni');
@@ -12,32 +9,46 @@
   var $mushroom = $('.mushroom');
   var $greenPeppers = $('.green-pepper');
 
-  // Price
-  var $pepPrice = $('li:contains("pepperonni")')
+    // Price
+    var basicPizza = 10;
+    var $pizzaTotal = $('strong');
+    $('strong').text('$ 13');
 
-
-  // $pepperonni.toggle()
-  // $pepBtn.removeClass('active');
   $pepBtn.on('click', function(){
     $pepperonni.toggle();
     $pepBtn.toggleClass('active');
     $('li:contains("pepperonni")').toggle();
+    if ($pepBtn.hasClass('active')) {
+      basicPizza += 1;
+    } else {
+      basicPizza -=1;
+    }
+    updateTotal();
   });
 
-  // $mushroom.toggle();
-  // $mushBtn.removeClass('active');
   $mushBtn.on('click', function(){
     $mushroom.toggle();
     $mushBtn.toggleClass('active');
     $('li:contains("mushrooms")').toggle();
+    if ($mushBtn.hasClass('active')) {
+      basicPizza += 1;
+    } else {
+      basicPizza -=1;
+    }
+    updateTotal();
+
   });
 
-  // $greenPeppers.toggle();
-  // $greenPepBtn.removeClass('active');
   $greenPepBtn.on('click', function(){
     $greenPeppers.toggle();
     $greenPepBtn.toggleClass('active');
     $('li:contains("green peppers")').toggle();
+    if ($greenPepBtn.hasClass('active')){
+          basicPizza+=1;
+      } else {
+          basicPizza-=1;
+      }
+      updateTotal();
   });
 
 // White Sauce & Gluten Free Crust
@@ -68,10 +79,14 @@ var $crustBtn = $('.btn-crust');
     $crust.toggleClass('crust-gluten-free');
     $crustBtn.toggleClass('active');
     $('li:contains("gluten-free crust")').toggle();
-
   })
 
 
-
+  function updateTotal() {
+       console.log($pizzaTotal);
+       $('strong').text(function() {
+        return $pizzaTotal = '$' + basicPizza;
+       }
+   )}
 
 });
